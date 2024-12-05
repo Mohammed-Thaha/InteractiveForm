@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin:0px;
+    padding:0px;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    height: 100vh;
+    background-color:rgba(128, 128, 128, 0.432);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+}
+:root{
+    --primary: rgb(34, 185, 185);
+    --secondary: #fff;
+}
+.container{
+    background-color:var(--secondary);
+    border-radius: 150px;
+    box-shadow:0px 5px 15px rgba(0,0,0,0.35);
+    position: relative;
+    overflow: hidden;
+    width:760px;
+    max-width:100%;
+    min-height: 480px;
+}
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    margin: 20px 0px;
+}
+.container span{font-size:12px;}
+.container a{
+    color: #333;
+    font-size:13px;
+    text-decoration: none;
+    margin: 15px 0px 10px;
+}
+.container button{
+    background-color:var(--primary);
+    color:var(--secondary);
+    padding: 10px 45px;
+    border:1px solid transparent;
+    border-radius:8px;
+    font-weight:600;
+    letter-spacing: 0.5px;
+    text-transform:uppercase;
+    margin-top: 10px;
+    cursor:pointer;
+}
+.container button.hidden{
+    background-color: transparent;
+    border-color:var(--secondary);
+}
+.container form{
+    height: 100%;
+    background-color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:0px 40px;
+}
+.container input{
+    background-color: #eee;
+    border:none;
+    margin:8px 0px;
+    padding:10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+    outline:none;
+}
+.sign-up,.sign-in{
+    position: absolute;
+    top:0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+.sign-in{
+    left:0;width:50%;z-index:2;
+}
+.container.active .sign-in{
+    transform: translate(100%);
+}
+.sign-up{
+    left:0;width:50%;z-index:1;opacity: 0;
+}
+.container.active .sign-up{
+    transform: translate(100%);
+    opacity: 1;
+    z-index:5;
+    animation: move 0.6s;
+}
+
+@keyframes move{
+    0%,49%,99%{opacity: 0;z-index: 1;}
+    50%,100%{opacity: 1;z-index: 5;}
+}
+.icons{margin:20px 0px;}
+.icons a{
+    border:1px solid #ccc;
+    border-radius: 20%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 3px;
+    width:40px;
+    height: 40px;
+}
+.icons a:hover{background-color:var(--primary);color:var(--secondary);}
+.toggle-container{
+    position: absolute;
+    top:0;
+    left:50%;
+    width:50%;
+    height:100%;
+    overflow: hidden;
+    border-radius: 150px;
+    z-index:1000;
+    transition: all 0.6s ease-in-out;
+}
+.container.active .toggle-container{transform: translateX(-100%);border-radius: 150px;}
+.toggle{
+    background-color: var(--primary);
+    height: 100%;
+    background:linear-gradient(to right,rgba(0, 128, 128, 0.742),var(--primary));
+    color: var(--secondary);
+    position: relative;
+    left: -100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+.container.active .toggle{transform: translateX(50%);}
+.toggle-pannel{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding:0px 30px;
+    text-align: center;
+    top:0;
+    transform:translateX(0);
+    transition: all 0.6s ease-in-out;
+}
+.toggle-left{transform: translateX(-200%);}
+.container.active .toggle-left{transform: translateX(0);}
+.toggle-right{right:0;transform:translateX(0);}
+.container.active .toggle-right{transform:translateX(200%);}
